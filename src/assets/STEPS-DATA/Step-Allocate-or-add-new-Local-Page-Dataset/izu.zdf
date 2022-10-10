@@ -1,0 +1,208 @@
+{
+   "private": {
+      "created": "2022-07-17T10:29:13.349Z",
+      "majorv": 0,
+      "minorv": 0,
+      "modified": "2022-07-17T10:29:13.363Z"
+   },
+       "public": {
+      "metaAppVersion": 0,
+      "stepProperties": {
+         "variableReferences": [
+                  {
+                     "noPromptIfSet": false,
+                     "required": true,
+                     "scope": "instance",
+                     "variablename": "Allocate-or-add-new-Local-Page-Dataset-pageName"
+                  },
+      			 {
+                     "noPromptIfSet": false,
+                     "required": true,
+                     "scope": "instance",
+                     "variablename": "Allocate-or-add-new-Local-Page-Dataset-volume"
+                  },
+      			{
+                     "noPromptIfSet": false,
+                     "required": true,
+                     "scope": "instance",
+                     "variablename": "Allocate-or-add-new-Local-Page-Dataset-volSpace"
+                  },
+      			{
+                     "noPromptIfSet": false,
+                     "required": true,
+                     "scope": "instance",
+                     "variablename": "Allocate-or-add-new-Local-Page-Dataset-add"
+                  },
+      			{
+                     "noPromptIfSet": false,
+                     "required": false,
+                     "scope": "instance",
+                     "variablename": "Allocate-or-add-new-Local-Page-Dataset-usrSpace"
+                  }
+               ],
+               "variables": [
+                  {
+                     "abstractValue": "New Local Page dataset to be allocated",
+                     "category": "zOS",
+                     "description": "New Local Page Dataset to be allocated. To get your naming convention you can use D ASM MVS command.",
+                     "label": "Page DSN",
+                     "name": "Allocate-or-add-new-Local-Page-Dataset-pageName",
+                     "scope": "instance",
+                     "type": "string",
+                     "varTypeInfo": {
+                        "choice": null,
+                        "defaultValue": "LOCAL.PAGE.#1",
+                        "errorMessage": null,
+                        "isMultiLine": false,
+                        "maxLength": null,
+                        "minLength": null,
+                        "regularExpression": null,
+                        "validationType": "DSNAME",
+                        "valueMustBeChoice": false
+                     },
+                     "visibility":"private",
+                     "promptAtCreate": "false",
+                     "requiredAtCreate":"false"
+                  },
+      			{
+                     "abstractValue": "Volume Name",
+                     "category": "zOS",
+                     "description": "Volume Serial Name where the new Local Page Dataset is allocated",
+                     "label": "VOLSER",
+                     "name": "Allocate-or-add-new-Local-Page-Dataset-volume",
+                     "scope": "instance",
+                     "type": "string",
+                     "varTypeInfo": {
+                        "choice": null,
+                        "defaultValue": "VOLXXX",
+                        "errorMessage": null,
+                        "isMultiLine": false,
+                        "maxLength": null,
+                        "minLength": null,
+                        "regularExpression": null,
+                        "validationType": "VOLSER",
+                        "valueMustBeChoice": false
+                     },
+                     "visibility":"private",
+                     "promptAtCreate": "false",
+                     "requiredAtCreate":"false"
+                  },
+      			{
+                     "abstractValue": "Select volume type for allocation",
+                     "category": "zOS",
+                     "description": "You can select volume type to allocate new page set. Maximum space allowed for the volume is used.",
+                     "label": "Volume type",
+                     "name": "Allocate-or-add-new-Local-Page-Dataset-volSpace",
+                     "scope": "instance",
+                     "type": "string",
+                     "varTypeInfo": {
+                        "choice": ["3390-3","3390-9"],
+                        "defaultValue": "3390-9",
+                        "errorMessage": null,
+                        "isMultiLine": false,
+                        "maxLength": null,
+                        "minLength": null,
+                        "regularExpression": null,
+                        "validationType": null,
+                        "valueMustBeChoice": false
+                     },
+                     "visibility":"private",
+                     "promptAtCreate": "false",
+                     "requiredAtCreate":"false"
+                  },
+      			{
+                     "abstractValue": "User given space in Cylinders (optional)",
+                     "category": "zOS",
+                     "description": "If you specify space allocation here, the volume type above is ignored.",
+                     "label": "User Space",
+                     "name": "Allocate-or-add-new-Local-Page-Dataset-usrSpace",
+                     "scope": "instance",
+                     "type": "string",
+                     "varTypeInfo": {
+                        "choice": null,
+                        "defaultValue": null,
+                        "errorMessage": null,
+                        "isMultiLine": false,
+                        "maxLength": null,
+                        "minLength": null,
+                        "regularExpression": null,
+                        "validationType": "ALPHANUM",
+                        "valueMustBeChoice": false
+                     },
+                     "visibility":"private",
+                     "promptAtCreate": "false",
+                     "requiredAtCreate":"false"
+                  },
+      			{
+                     "abstractValue": "Add new Page Space dynamically to the system",
+                     "category": "zOS",
+                     "description": "Decides if you want to add newly allocated Local Page Space to the system.",
+                     "label": "Add dynamically",
+                     "name": "Allocate-or-add-new-Local-Page-Dataset-add",
+                     "scope": "instance",
+                     "type": "string",
+                     "varTypeInfo": {
+                        "choice": ["YES","NO"],
+                        "defaultValue": "YES",
+                        "errorMessage": null,
+                        "isMultiLine": false,
+                        "maxLength": null,
+                        "minLength": null,
+                        "regularExpression": null,
+                        "validationType": null,
+                        "valueMustBeChoice": false
+                     },
+                     "visibility":"private",
+                     "promptAtCreate": "false",
+                     "requiredAtCreate":"false"
+                  }
+                ],
+         "autoEnable": false,
+         "canMarkAsFailed": false,
+         "creator": "ibmuser",
+         "description": "\n    <h1>\n                <b>Allocate new Local Page Dataset<\/b>\n            <\/h1>\n    <h2>\n                <b>The new Page Space can be dynamically added to the system<\/b>\n            <\/h2>\n    The Workflow is used to allocate a new Local Page Dataset on a specified volume.<br><\/br>\n    You need to provide, Local Page Dataset name, space in Cylinders. (or select a volume type)<br><\/br>\n    In case no user space is selected, the space is allocated as a maximum allowed for the volume type.<br><\/br>\n    <br><\/br>\n    When the Workflow completes, check the output in DD called RESULT.\n    <br><\/br>\n    <br><\/br>\n    In case of questions please send an email to miroslav_kubik@cz.ibm.com\n    ",
+         "hasNestedSteps": false,
+         "instructions": {
+            "instructionText": "Do not forget to fill in all variables!",
+            "instructionsSub": false
+         },
+         "isCallingStep": false,
+         "isParent": false,
+         "name": "Allocate-or-add-new-Local-Page-Dataset",
+         "optional": false,
+         "sharedStepDescription": "\n    <h1>\n                <b>Allocate new Local Page Dataset<\/b>\n            <\/h1>\n    <h2>\n                <b>The new Page Space can be dynamically added to the system<\/b>\n            <\/h2>\n    The Workflow is used to allocate a new Local Page Dataset on a specified volume.<br><\/br>\n    You need to provide, Local Page Dataset name, space in Cylinders. (or select a volume type)<br><\/br>\n    In case no user space is selected, the space is allocated as a maximum allowed for the volume type.<br><\/br>\n    <br><\/br>\n    When the Workflow completes, check the output in DD called RESULT.\n    <br><\/br>\n    <br><\/br>\n    In case of questions please send an email to miroslav_kubik@cz.ibm.com\n    ",
+         "sharedStepName": "Allocate-or-add-new-Local-Page-Dataset",
+         "skills": "MVS",
+         "stepFeedbackList": [
+         ],
+         "suspendInfo": {
+            "isSuspend": false
+         },
+         "template": {
+            "immediateScriptExecution": null,
+            "maxLrecl": 80,
+            "maxRc": 0,
+            "needResolveConflicts": true,
+            "output": "",
+            "outputEncoding": "",
+            "outputSub": false,
+            "saveAsDataset": "",
+            "saveAsDatasetEncoding": "",
+            "saveAsDatasetSub": false,
+            "saveAsUnixFile": "",
+            "saveAsUnixFileEncoding": "",
+            "saveAsUnixFileSub": false,
+            "submitAs": "JCL",
+            "sysoutDD": false,
+            "templateName": null,
+            "templateNameSubstitution": false,
+            "templateSubstitution": true,
+            "templateText": "\/\/REXXDATA  EXEC  PGM=IEBUPDTE,PARM=NEW\n\/\/SYSPRINT  DD DUMMY\n\/\/SYSUT2    DD DISP=(,PASS),UNIT=3390,SPACE=(TRK,(10,1,1)),\n\/\/             RECFM=FB,LRECL=80,BLKSIZE=0,DSORG=PO\n\/\/SYSIN     DD *\n.\/ ADD NAME=PAGE\n \/* REXX *\/\n\n pageName = '${instance-Allocate-or-add-new-Local-Page-Dataset-pageName}'\n volume   = '${instance-Allocate-or-add-new-Local-Page-Dataset-volume}'\n volSpace = '${instance-Allocate-or-add-new-Local-Page-Dataset-volSpace}'\n usrSpace = '${instance-Allocate-or-add-new-Local-Page-Dataset-usrSpace}'\n add      = '${instance-Allocate-or-add-new-Local-Page-Dataset-add}'\n\n Select\n\n   When usrSpace <> '' then usrSpace = usrSpace\n   When volSpace  =  '3390-9' then usrSpace = 10017\n   When volSpace  =  '3390-3' then usrSpace = 3339\n   Otherwise\n    nop\n End\n\n queue '  DEFINE PAGESPACE -'\n queue '         ( FILE(VOLSER) NAME('pageName') -'\n queue '           CYLINDERS('usrSpace') VOLUME('volume'))'\n\n \"EXECIO\" queued() \"DISKW ASM (FINIS\"\n\n Exit\n\/\/REXXEX   EXEC PGM=IKJEFT01\n\/\/SYSPRINT DD SYSOUT=*\n\/\/SYSPROC  DD DSN=*.REXXDATA.SYSUT2,DISP=(OLD,DELETE)\n\/\/SYSTSPRT  DD SYSOUT=*\n\/\/ASM       DD DISP=(,PASS),UNIT=3390,SPACE=(TRK,(10,1)),\n\/\/             RECFM=FB,LRECL=80,BLKSIZE=0,DSORG=PS\n\/\/SYSTSIN  DD *\n %PAGE\n\/\/ALC     EXEC PGM=IDCAMS,REGION=512K\n\/\/SYSPRINT DD  SYSOUT=*\n\/\/VOLSER   DD  UNIT=3390,VOL=SER=${instance-Allocate-or-add-new-Local-Page-Dataset-volume},DISP=OLD\n\/\/SYSIN    DD  DISP=OLD,DSN=*.REXXEX.ASM,VOL=REF=*.REXXEX.ASM\n\/\/IFOK      IF  (RC = 0) THEN\n\/\/REXXDCMD  EXEC  PGM=IEBUPDTE,PARM=NEW\n\/\/SYSPRINT  DD DUMMY\n\/\/SYSUT2    DD DISP=(,PASS),UNIT=3390,SPACE=(TRK,(10,1,1)),\n\/\/             RECFM=FB,LRECL=80,BLKSIZE=0,DSORG=PO\n\/\/SYSIN     DD *\n.\/ ADD NAME=CMD\n \/* REXX *\/\n\n add = '${instance-Allocate-or-add-new-Local-Page-Dataset-add}'\n if add = 'YES' then do\n  queue Substr(\"${instance-Allocate-or-add-new-Local-Page-Dataset-pageName} allocated\",1,100)\n  queue Substr(\"Adding to system...\",1,100)\n  call issueCmd 'PA PAGE=${instance-Allocate-or-add-new-Local-Page-Dataset-pageName}'\n  queue Substr(\"Listing active Local Page Datasets\",1,100)\n  call issueCmd 'D ASM'\n\n  queue Substr(\"New Local Page Dataset added - done\",1,100)\n end\n else do\n  queue \"${instance-Allocate-or-add-new-Local-Page-Dataset-pageName} allocated on ${instance-Allocate-or-add-new-Local-Page-Dataset-volume}\"\n end\n \"EXECIO\" queued() \"DISKW RESULT (FINIS\"\n 'DELSTACK'\n\n Exit\n\n issueCmd:\n\n  parse arg cmd\n  'CONSOLE NAME('SYSVAR(SYSUID)'@) ACTIVATE'\n  'CONSOLE SYSCMD('cmd')'\n  msgs = GETMSG('line.','SOL',,,10)\n  do i=1 to line.0\n   queue line.i\n  end i\n  'CONSOLE DEACTIVATE'\n\n  return\n\/\/REXXEX   EXEC PGM=IKJEFT01\n\/\/SYSPRINT DD SYSOUT=*\n\/\/SYSPROC  DD DSN=*.REXXDCMD.SYSUT2,DISP=(OLD,DELETE)\n\/\/SYSTSPRT  DD SYSOUT=*\n\/\/RESULT   DD SYSOUT=*\n\/\/SYSTSIN  DD *\n %CMD\n\/\/IFOKEND   ENDIF\n\n       \t",
+            "templateTextMods": false,
+            "templateType": "inline"
+         },
+         "title": "Allocate\/add new Local Page Dataset",
+         "weight": 1
+      }
+   }
+}
