@@ -1,0 +1,101 @@
+{
+   "private": {
+      "created": "2022-06-20T01:45:51.055Z",
+      "majorv": 0,
+      "minorv": 0,
+      "modified": "2022-06-21T14:20:50.273Z"
+   },
+   "public": {
+      "metaAppVersion": 1,
+      "stepList": {
+      "RACF-USERADD": {
+            "creator": "ibmuser",
+            "description": "This step will create a new RACF user. It requires the following input from the user:\n<ul>\n   <li>RACF UserID<\/li> <li>RACF User Name<\/li> <li>RACF Password<\/li> <li>RACF Group<\/li><\/ul>\n This step can be used interactively or be triggered from a service userID."
+         },
+         "RACF-RESETPW": {
+            "creator": "ibmuser",
+            "description": "This step will reset the password for a given userID.  \n It can be used interactively or be triggered from a service userID."
+         },
+         "RACF-USERDEL": {
+            "creator": "ibmuser",
+            "description": "This step will delete a RACF user. It requires the following input from the user:\n<ul>\n   <li>RACF UserID<\/li><\/ul>  \nThis step can be used interactively or be triggered from a service userID."
+         },
+         "DELETE-OLD-FILES": {
+            "creator": "ibmuser",
+            "description": "This bash script will be executed on USS to delete 'n' day old files from an input path. \n - Be careful and validate the input information before submiting the job (This is a disrruptive command!)   \n  - Make sure you have the proper authorization to perform the commands  \n  - Make sure the input path is correct (it is not recommended to use wildcards)"
+         },
+         "Convert-HFS-To-ZFS": {
+            "creator": "ibmuser",
+            "description": "This step can be used to convert one or more HFS datasets to ZFS."
+         },
+         "Delete-ZFS": {
+            "creator": "ibmuser",
+            "description": "This step can be used to delete a ZFS or VSAM dataset from the system.\n Please follow through the wizard to delete a ZFS dataset "
+         },
+         "GROW-ZFS": {
+            "creator": "ibmuser",
+            "description": "This step can be used to grow a ZFS filesystem. \n Please follow the instructions of the wizard to get a ZFS grown."
+         },
+         "Mount-ZFS": {
+            "creator": "ibmuser",
+            "description": "This step can be used to mount a ZFS filesystem. \n This wizard will help you get a ZFS aggregate unmounted."
+         },
+         "SHRINK-ZFS": {
+            "creator": "ibmuser",
+            "description": "This step can be used to shrink a ZFS aggregate. \n Please follow the wizard to shrink a ZFS aggregate."
+         },
+         "Unmount-ZFS": {
+            "creator": "ibmuser",
+            "description": "This step can be used to unmount a ZFS filesystem. \n Please follow through the wizard to unmount a zfs filesystem."
+         },
+         "Extend-HFSOrzFS-To-New-Volume": {
+            "creator": "ibmuser",
+            "description": "This step is used to extend an already existing HFS\/zFS to a new volume(s). \n    You need to provide, existing HFS\/zFS name and number of volumes you want to add. \n    Each \"*\" represents one additional volume. You can also put in specific volume names separated by blank. \n  This step automatically detects if the HFS\/zFS is mounted and in such a situation does a remount-same mode to activate the change. \n \n  1. Make sure you put correct file system name you want to extend. \n 2. Run this step.  \n 3. Expected return codes: 0 - volume(s) added successfully and remount done. 4 - volume(s) added, remount not needed. \n \n  Note: In case file system is mounted, remount - samemode will be done."
+         },
+         "Allocate-or-add-new-Local-Page-Dataset": {
+            "creator": "ibmuser",
+            "description": "The step is used to allocate a new Local Page Dataset on a specified volume. \n The new Page Space can be dynamically added to the system. \n You need to provide, Local Page Dataset name, space in Cylinders. (or select a volume type). \n In case no user space is selected, the space is allocated as a maximum allowed for the volume type. \n When the step completes, check the output in DD called RESULT."
+         },
+         "Take-an-SVC-dump": {
+            "creator": "ibmuser",
+            "description": "The step can take a dump of a running STC, TSU or JOB."
+         },
+         "Remove-Datase-from-Linklist": {
+            "creator": "ibmuser",
+            "description": "This step can remove a Dataset from Linklist."
+         },
+         "Delete-all-members-from-a-given-PDS": {
+            "creator": "ibmuser",
+            "description": "This step will deleta all members from a given PDS. \n Please use extreme caution before running this step."
+         },
+         "Create-New-Linklist-Set": {
+            "creator": "ibmuser",
+            "description": "This step can add a dataset to your Linklist Concatenation. \n This step requires: \n<ul>\n  <li>Target Dataset Name<\/li>  <li>Target Linklist Name<\/li>  <li>Target Location in Linklist<\/li>  <li> \nAfter Dataset if Target Location is AFTER<\/li><\/ul>"
+         },
+         "REST-API-CallTo-Issue-Console-Command": {
+            "creator": "ibmuser",
+            "description": "This step shows how to use a REST API call to issue a console command. \n It uses the z\/OSMF REST Consoles interface."
+         },
+         "Sysplex-Policy-Report": {
+            "creator": "ibmuser",
+            "description": "This step will report on your current sysplex policies. A policy Report will be generated for your sysplex. \n This step can generate reports for the following policies: \n\n ARM  - Automatic Restart Manager   \n  CFRM - Coupling Facility Resource Manager   \n  LOGR - System Logger  \n SFM  - Sysplex Failure Management \n\n  This step does not require input values, If you want to point to use specific CDS datasets you will need to fill out the CDS and Vol fields."
+         },
+         "Write-IPL-Text-To-Selected-Volser": {
+            "creator": "ibmuser",
+            "description": "This step will write IPLTEXT to the selected Volser. \n Please follow through the wizard to have the IPL text written."
+         },
+         "Define-GDG-Base": {
+            "creator": "ibmuser",
+            "description": "This step will define a new GDG."
+         },
+         "Purge-GDG-Base": {
+            "creator": "ibmuser",
+            "description": "This step will purge an existing GDG Base. \n This step can be used interactively or be triggered from a service userID."
+         },
+         "Define-ZFS": {
+            "creator": "ibmuser",
+            "description": "This step uses the IDCAMS Access Method Services APIs to define the new ZFS."
+         }
+      }
+   }
+}

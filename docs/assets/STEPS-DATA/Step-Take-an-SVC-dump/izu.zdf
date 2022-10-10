@@ -1,0 +1,149 @@
+{
+   "private": {
+      "created": "2022-07-17T10:18:57.759Z",
+      "majorv": 0,
+      "minorv": 0,
+      "modified": "2022-07-17T10:18:57.772Z"
+   },
+   "public": {
+      "metaAppVersion": 0,
+      "stepProperties": {
+         "variableReferences": [
+                  {
+                     "noPromptIfSet": true,
+                     "required": true,
+                     "scope": "instance",
+                     "variablename": "Take-an-SVC-dump-tcomm"
+                  },
+      			 {
+                     "noPromptIfSet": false,
+                     "required": false,
+                     "scope": "instance",
+                     "variablename": "Take-an-SVC-dump-tparm"
+                  },
+      			{
+                     "noPromptIfSet": true,
+                     "required": true,
+                     "scope": "instance",
+                     "variablename": "Take-an-SVC-dump-tstc"
+                  }
+               ],
+            "variables": [
+                  {
+                     "abstractValue": "This can be a JOB or STC, If more than one specified separate with commas",
+                     "category": "SVCDUMP",
+                     "description": "The workflow will use the DUMP COMM command to take this dump",
+                     "label": "Name of JOB to be Dumped",
+                     "name": "Take-an-SVC-dump-tstc",
+                     "scope": "instance",
+                     "type": "string",
+                     "varTypeInfo": {
+                        "choice": null,
+                        "defaultValue": null,
+                        "errorMessage": null,
+                        "isMultiLine": false,
+                        "maxLength": 8,
+                        "minLength": 1,
+                        "regularExpression": null,
+                        "validationType": null,
+                        "valueMustBeChoice": false
+                     },
+                     "visibility":"private",
+                     "promptAtCreate": "true",
+                     "requiredAtCreate":"true"
+                  },
+      			{
+                     "abstractValue": "Parms such as SDATA, DSPNAME, etc",
+                     "category": "SVCDUMP",
+                     "description": "These parms will be added to the reply",
+                     "label": "Additional Parms for Dump",
+                     "name": "Take-an-SVC-dump-tparm",
+                     "scope": "instance",
+                     "type": "string",
+                     "varTypeInfo": {
+                        "choice": null,
+                        "defaultValue": null,
+                        "errorMessage": null,
+                        "isMultiLine": false,
+                        "maxLength": null,
+                        "minLength": null,
+                        "regularExpression": null,
+                        "validationType": null,
+                        "valueMustBeChoice": false
+                     },
+                     "visibility":"private",
+                     "promptAtCreate": "false",
+                     "requiredAtCreate":"false"
+                  },
+      			 {
+                     "abstractValue": "Title used to identify your dump",
+                     "category": "SVCDUMP",
+                     "description": "This will be visible in D D,T command or IPCS.",
+                     "label": "Dump Tittle",
+                     "name": "Take-an-SVC-dump-tcomm",
+                     "scope": "instance",
+                     "type": "string",
+                     "varTypeInfo": {
+                        "choice": null,
+                        "defaultValue": null,
+                        "errorMessage": null,
+                        "isMultiLine": false,
+                        "maxLength": null,
+                        "minLength": null,
+                        "regularExpression": null,
+                        "validationType": null,
+                        "valueMustBeChoice": false
+                     },
+                     "visibility":"private",
+                     "promptAtCreate": "true",
+                     "requiredAtCreate":"true"
+                  }
+                ],
+         "autoEnable": false,
+         "canMarkAsFailed": false,
+         "creator": "ibmuser",
+         "description": "<h3>SVC Dump<\/h3>\nUse this workflow to take an SVC dump.\n\n<br><br>\nIf you have any questions please reach out to Eduardo Rocha:<br>\n<a href=\"mailto:eduardor@br.ibm.com\">Eduardo Rocha @IBM<\/a><br>\n<a href=\"https:\/\/www.linkedin.com\/in\/ehrocha\/\">Eduardo Rocha @LinkedIn<\/a>",
+         "hasNestedSteps": false,
+         "instructions": {
+            "instructionText": "<h3>Take an STC Dump<\/h3>\nUse this workflow to take a dump of a running STC, TSU or JOB.\n<br>\nThis workflow requires:\n<ul>\n  <li>Target Address Space Name<\/li>\n  <li>Additional Dump Parameters<\/li>\n<\/ul>\n\n<br><br>\nIf you have any questions please reach out to Eduardo Rocha:<br>\n<a href=\"mailto:eduardor@br.ibm.com\">Eduardo Rocha @IBM<\/a><br>\n<a href=\"https:\/\/www.linkedin.com\/in\/ehrocha\/\">Eduardo Rocha @LinkedIn<\/a>",
+            "instructionsSub": false
+         },
+         "isCallingStep": false,
+         "isParent": false,
+         "name": "Take-an-SVC-dump",
+         "optional": false,
+         "sharedStepDescription": "<h3>SVC Dump<\/h3>\nUse this workflow to take an SVC dump.\n\n<br><br>\nIf you have any questions please reach out to Eduardo Rocha:<br>\n<a href=\"mailto:eduardor@br.ibm.com\">Eduardo Rocha @IBM<\/a><br>\n<a href=\"https:\/\/www.linkedin.com\/in\/ehrocha\/\">Eduardo Rocha @LinkedIn<\/a>",
+         "sharedStepName": "Take-an-SVC-dump",
+         "stepFeedbackList": [
+         ],
+         "suspendInfo": {
+            "isSuspend": false
+         },
+         "template": {
+            "immediateScriptExecution": null,
+            "maxLrecl": 80,
+            "maxRc": 0,
+            "needResolveConflicts": true,
+            "output": "",
+            "outputEncoding": "",
+            "outputSub": false,
+            "saveAsDataset": "",
+            "saveAsDatasetEncoding": "",
+            "saveAsDatasetSub": false,
+            "saveAsUnixFile": "",
+            "saveAsUnixFileEncoding": "",
+            "saveAsUnixFileSub": false,
+            "submitAs": "TSO-REXX-JCL",
+            "sysoutDD": false,
+            "templateName": null,
+            "templateNameSubstitution": false,
+            "templateSubstitution": true,
+            "templateText": "\/* REXX *\/                                                          \ntstc='${instance-Take-an-SVC-dump-tstc}'\ntparm='${instance-Take-an-SVC-dump-tparm}'\ntcomm='${instance-Take-an-SVC-dump-tcomm}'\ntsrc=strip(tstc)\ntparm=strip(tparm)\ntcomm=strip(tcomm)\n\/*----------------------------------------------------------------\n - Issues the DUMP COMM='' Command\n - Traps the IEE094D reply number\n - Replies with additional parms if any or witout parm\n - Replies Jobname and end.\n - Test for tparm: SDATA=(CSA,RGN,PSA,SQA,LSQA,TRT,SUM)\n----------------------------------------------------------------*\/  \ncall syscmd \"dump comm='\"tcomm\"'\"\n\/* Trap for *07 IEE094D *\/\nparse var line.1 with '*' rnum 'IEE094D'\nrnum=strip(rnum)\nif strip(tparm) \/= '' then\n   call syscmd rnum\",\"||tparm||\",JOBNAME=(\"||tstc||\")\"\nelse\n   call syscmd rnum\",JOBNAME=(\"||tstc||\")\"\nexit\nsyscmd: \n  parse arg cmd\n  x=msg('off')\n  'CONSOLE DEACTIVATE'\n  x=msg('off')\n  'CONSOLE NAME('SYSVAR(SYSUID)||'@) ACTIVATE'\n  'CONSOLE SYSCMD('cmd')'\n  msgs = GETMSG('line.','SOL',,,10)\n  'CONSOLE DEACTIVATE'\n  return",
+            "templateTextMods": false,
+            "templateType": "inline"
+         },
+         "title": "SVC Dump",
+         "weight": 1
+      }
+   }
+}

@@ -1,0 +1,67 @@
+{
+   "private": {
+      "created": "2022-07-17T03:06:50.362Z",
+      "majorv": 0,
+      "minorv": 0,
+      "modified": "2022-07-17T03:06:50.373Z"
+   },
+   "public": {
+      "metaAppVersion": 0,
+      "stepProperties": {
+         "autoEnable": false,
+         "canMarkAsFailed": false,
+         "creator": "ibmuser",
+         "description": "<h3>This step shows how to use a REST API call to issue a console command <\/h3>\n<h6>It uses the z\/OSMF REST Consoles interface<\/h6>\n<br><br>\nIf you have any questions please reach out to Eduardo Rocha:<br>\n<a href=\"mailto:eduardor@br.ibm.com\">Eduardo Rocha @IBM<\/a><br>\n<a href=\"https:\/\/www.linkedin.com\/in\/ehrocha\/\">Eduardo Rocha @LinkedIn<\/a>",
+         "hasNestedSteps": false,
+         "instructions": {
+            "instructionText": "<h3>This step shows how to use a REST API call to issue a console command <\/h3>\n<h6>It uses the z\/OSMF REST Consoles interface<\/h6>\n<br><br>\nIf you have any questions please reach out to Eduardo Rocha:<br>\n<a href=\"mailto:eduardor@br.ibm.com\">Eduardo Rocha @IBM<\/a><br>\n<a href=\"https:\/\/www.linkedin.com\/in\/ehrocha\/\">Eduardo Rocha @LinkedIn<\/a>",
+            "instructionsSub": false
+         },
+         "isCallingStep": false,
+         "isParent": false,
+         "name": "REST-API-CallTo-Issue-Console-Command",
+         "optional": false,
+         "rest": {
+            "actualStatusCode": "",
+            "certificateSub": false,
+            "certificates": "",
+            "expectedStatusCode": "200",
+            "expectedValue": "",
+            "hostname": "your.hostname.here",
+            "hostnameSub": false,
+            "httpMethod": "PUT",
+            "password": "eW91cnBhc3M=",
+            "passwordSub": false,
+            "pollCountMaximum": "",
+            "pollCountMaximumSub": false,
+            "pollExitCondition": "",
+            "pollWaitTime": "",
+            "pollWaitTimeSub": false,
+            "port": "443",
+            "portSub": false,
+            "propertyMappings": [
+            ],
+            "queryParameters": "",
+            "queryParametersSub": false,
+            "requestBody": "{\"cmd\":\"d a,l\"}",
+            "requestBodySub": false,
+            "requestHeader": "",
+            "requestHeaderSub": false,
+            "schemeName": "https",
+            "uriPath": "\/zosmf\/restconsoles\/consoles\/conscmd",
+            "uriPathSub": false,
+            "username": "youruser",
+            "usernameSub": false
+         },
+         "sharedStepDescription": "<h3>This step shows how to use a REST API call to issue a console command <\/h3>\n<h6>It uses the z\/OSMF REST Consoles interface<\/h6>\n<br><br>\nIf you have any questions please reach out to Eduardo Rocha:<br>\n<a href=\"mailto:eduardor@br.ibm.com\">Eduardo Rocha @IBM<\/a><br>\n<a href=\"https:\/\/www.linkedin.com\/in\/ehrocha\/\">Eduardo Rocha @LinkedIn<\/a>",
+         "sharedStepName": "REST-API-CallTo-Issue-Console-Command",
+         "stepFeedbackList": [
+         ],
+         "suspendInfo": {
+            "isSuspend": false
+         },
+         "title": "Will call a REST API.",
+         "weight": 1
+      }
+   }
+}

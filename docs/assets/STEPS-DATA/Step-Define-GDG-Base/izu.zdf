@@ -1,0 +1,185 @@
+
+{
+   "private": {
+      "created": "2022-07-16T13:40:36.011Z",
+      "majorv": 0,
+      "minorv": 0,
+      "modified": "2022-07-16T13:40:36.025Z"
+   },
+   "public": {
+      "metaAppVersion": 0,
+      "stepProperties": {
+          "variableReferences": [
+            {
+               "noPromptIfSet": false,
+               "required": false,
+               "scope": "instance",
+               "variablename": "Define-GDG-Base-gdg-name"
+            },
+            {
+               "noPromptIfSet": false,
+               "required": false,
+               "scope": "instance",
+               "variablename": "Define-GDG-Base-gdg-limit"
+            },
+            {
+               "noPromptIfSet": false,
+               "required": false,
+               "scope": "instance",
+               "variablename": "Define-GDG-Base-gdg-empty"
+            },
+            {
+               "noPromptIfSet": false,
+               "required": false,
+               "scope": "instance",
+               "variablename": "Define-GDG-Base-gdg-scratch"
+            }
+         ],
+          "variables": [
+            {
+               "abstractValue": "This is the name of the new GDG base file",
+               "category": "DSN",
+               "description": "This is the name of the new GDG base file",
+               "label": "Please enter the GDG name",
+               "name": "Define-GDG-Base-gdg-name",
+               "scope": "instance",
+               "type": "string",
+               "varTypeInfo": {
+                  "choice": null,
+                  "defaultValue": null,
+                  "errorMessage": null,
+                  "isMultiLine": false,
+                  "maxLength": null,
+                  "minLength": null,
+                  "regularExpression": null,
+                  "validationType": "DSNAME",
+                  "valueMustBeChoice": false
+               },
+               "visibility":"private",
+               "promptAtCreate": "true",
+               "requiredAtCreate":"true"
+            },
+            {
+               "abstractValue": "Select if all generations should be uncatalog after the limit is reached.",
+               "category": "DSN",
+               "description": "EMPTY will uncatalog all generations after limit is reached. NOEMPTY will uncatalog the least recent only.",
+               "label": "Please select the EMPTY option",
+               "name": "Define-GDG-Base-gdg-empty",
+               "scope": "instance",
+               "type": "string",
+               "varTypeInfo": {
+                  "choice": [
+                     "EMPTY",
+                     "NOEMPTY"
+
+                  ],
+                  "defaultValue": null,
+                  "errorMessage": null,
+                  "isMultiLine": false,
+                  "maxLength": null,
+                  "minLength": null,
+                  "regularExpression": null,
+                  "validationType": null,
+                  "valueMustBeChoice": true
+               },
+               "visibility":"private",
+               "promptAtCreate": "true",
+               "requiredAtCreate":"true"
+            },
+            {
+               "abstractValue": "This is the limit of GDG files that will be created.",
+               "category": "DSN",
+               "description": "When the limit is reached, the oldest DSN in GDG will be overwritten",
+               "label": "Please enter the GDG Limit",
+               "name": "Define-GDG-Base-gdg-limit",
+               "scope": "instance",
+               "type": "integer",
+               
+                  "varTypeInfo": {
+                  "minValue":null,
+                  "maxValue":null,
+                  "defaultValue":"3"
+               },
+               
+               "visibility":"private",
+               "promptAtCreate": "true",
+               "requiredAtCreate":"true"
+            },
+            {
+               "abstractValue": "Select if generation is physically deleted after uncatalog.",
+               "category": "DSN",
+               "description": "SCRATCH will delete after uncatalog. NOSCRATCH will not.",
+               "label": "Please select the SCRATCH option",
+               "name": "Define-GDG-Base-gdg-scratch",
+               "scope": "instance",
+               "type": "string",
+               "varTypeInfo": {
+                  "choice": [
+                     "SCRATCH",
+                     "NOSCRATCH"
+
+                  ],
+                  "defaultValue": null,
+                  "errorMessage": null,
+                  "isMultiLine": false,
+                  "maxLength": null,
+                  "minLength": null,
+                  "regularExpression": null,
+                  "validationType": null,
+                  "valueMustBeChoice": true
+               },
+               "visibility":"private",
+               "promptAtCreate": "true",
+               "requiredAtCreate":"true"
+            }
+          ],
+
+         "autoEnable": true,
+         "canMarkAsFailed": false,
+         "creator": "ibmuser",
+         "description": "This step will define a new GDG.",
+         "hasNestedSteps": false,
+         "instructions": {
+            "instructionText": "This step will define GDG base: ${instance-Define-GDG-Base-gdg-name}. This step can be used interactively or be triggered from a service userID.",
+            "instructionsSub": true
+         },
+         "isCallingStep": false,
+         "isParent": false,
+         "name": "Define-GDG-Base",
+         "optional": false,
+         "sharedStepDescription": "This step will define a new GDG.",
+         "sharedStepName": "Define-GDG-Base",
+         "skills": "DSN Management",
+         "stepFeedbackList": [
+         ],
+         "suspendInfo": {
+            "isSuspend": false
+         },
+         "template": {
+            "immediateScriptExecution": null,
+            "maxLrecl": null,
+            "maxRc": 0,
+            "needResolveConflicts": true,
+            "output": "",
+            "outputEncoding": "",
+            "outputSub": false,
+            "saveAsDataset": "",
+            "saveAsDatasetEncoding": "",
+            "saveAsDatasetSub": false,
+            "saveAsUnixFile": "",
+            "saveAsUnixFileEncoding": "",
+            "saveAsUnixFileSub": false,
+            "submitAs": "JCL",
+            "sysoutDD": false,
+            "templateName": null,
+            "templateNameSubstitution": false,
+            "templateSubstitution": true,
+            "templateText": "\/\/GDGSTEP1 EXEC PGM=IDCAMS\n\/\/SYSPRINT DD  SYSOUT=*\n\/\/SYSIN    DD  *\n           DEFINE GDG(NAME(${instance-Define-GDG-Base-gdg-name})   -\n           LIMIT(${instance-Define-GDG-Base-gdg-limit})                           -\n           ${instance-Define-GDG-Base-gdg-empty}                            -\n           ${instance-Define-GDG-Base-gdg-scratch})\n\/*\n\/\/",
+            "templateTextMods": false,
+            "templateType": "inline"
+         },
+         "title": "Define GDG Base",
+         "weight": 1
+      }
+   }
+}

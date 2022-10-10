@@ -1,0 +1,113 @@
+{
+   "private": {
+      "created": "2022-09-21T06:21:02.866Z",
+      "majorv": 0,
+      "minorv": 0,
+      "modified": "2022-09-21T06:21:02.867Z"
+   },
+   "public": {
+      "metaAppVersion": 0,
+      "stepProperties": {
+      "variableReferences": [
+            {
+               "noPromptIfSet": false,
+               "required": false,
+               "scope": "instance",
+               "variablename": "Purge-GDG-Base-gdg-name"
+            },
+            {
+               "noPromptIfSet": false,
+               "required": false,
+               "scope": "instance",
+               "variablename": "Purge-GDG-Base-gdg-force"
+            }
+         ],
+          "variables": [
+            {
+               "abstractValue": "This is the name of the new GDG base file",
+               "category": "DSN",
+               "description": "This is the name of the new GDG base file",
+               "label": "Please enter the GDG name",
+               "name": "Purge-GDG-Base-gdg-name",
+               "scope": "instance",
+               "type": "string",
+               "varTypeInfo": {
+                  "choice": null,
+                  "defaultValue": null,
+                  "errorMessage": null,
+                  "isMultiLine": false,
+                  "maxLength": null,
+                  "minLength": null,
+                  "regularExpression": null,
+                  "validationType": "DSNAME",
+                  "valueMustBeChoice": false
+               },
+               "visibility":"private",
+               "promptAtCreate": "true",
+               "requiredAtCreate":"true"
+            },
+            {
+               "abstractValue": "If this is selected, all generation files will be purged as well.",
+               "category": "DSN",
+               "description": "This option will define if the FORCE parameter will be used on purge JCL.",
+               "label": "FORCE Option",
+               "name": "Purge-GDG-Base-gdg-force",
+               "scope": "instance",
+               "type": "boolean",
+               "varTypeInfo": {
+                  "defaultValue": false
+               },
+               "visibility":"private",
+               "promptAtCreate": "true",
+               "requiredAtCreate":"true"
+            }
+          ],
+         "autoEnable": true,
+         "canMarkAsFailed": false,
+         "creator": "zosmfad",
+         "description": "This step will purge an existing GDG Base.",
+         "hasNestedSteps": false,
+         "instructions": {
+            "instructionText": "This step will purge the GDG base: ${instance-Purge-GDG-Base-gdg-name} .This step can be used interactively or be triggered from a service userID.",
+            "instructionsSub": true
+         },
+         "isCallingStep": false,
+         "isParent": false,
+         "name": "Purge-GDG-Base",
+         "optional": false,
+         "sharedStepDescription": "This step will purge an existing GDG Base.",
+         "sharedStepName": "Purge-GDG-Base",
+         "skills": "DSN Management",
+         "stepFeedbackList": [
+         ],
+         "suspendInfo": {
+            "isSuspend": false
+         },
+         "template": {
+            "immediateScriptExecution": null,
+            "maxLrecl": null,
+            "maxRc": 0,
+            "needResolveConflicts": true,
+            "output": "",
+            "outputEncoding": "",
+            "outputSub": false,
+            "saveAsDataset": "",
+            "saveAsDatasetEncoding": "",
+            "saveAsDatasetSub": false,
+            "saveAsUnixFile": "",
+            "saveAsUnixFileEncoding": "",
+            "saveAsUnixFileSub": false,
+            "submitAs": "JCL",
+            "sysoutDD": false,
+            "templateName": null,
+            "templateNameSubstitution": false,
+            "templateSubstitution": true,
+            "templateText": "\/\/STEP01 EXEC PGM=IDCAMS\n\/\/SYSPRINT DD SYSOUT=*\n\/\/SYSIN DD *\n#if(!${instance-Purge-GDG-Base-gdg-force}})\n DELETE ${instance-Purge-GDG-Base-gdg-name} PURGE\n#end\n#if(${instance-Purge-GDG-Base-gdg-force})\n DELETE ${instance-Purge-GDG-Base-gdg-name} PURGE FORCE\n#end\n\/*",
+            "templateTextMods": false,
+            "templateType": "inline"
+         },
+         "title": "Purge GDG Base",
+         "weight": 1
+      }
+   }
+}
